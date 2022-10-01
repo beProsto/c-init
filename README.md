@@ -24,3 +24,5 @@ python3 c-init/c-init.py xam  # will create a C++ application project compiled w
 python3 c-init/c-init.py clc  # will create a C library project compiled with Cmake
 ...
 ```
+
+I didn't have the willpower to make it pip-compatible when designing it, so maybe imma do that sometime in the future.
