@@ -6,7 +6,7 @@
 # so I decided to make a simple python script to handle that for me lol
 # ###
 
-
+import sys
 import os
 
 # Recursively creates directories
@@ -36,18 +36,21 @@ def makeFile(name, contents=""):
 
 # Opens and dumps a file into a string
 def loadFile(name):
-	fp = open(os.path.dirname(os.path.abspath(__file__)) + "/" + name, "r")
+	fp = open(os.path.dirname(os.path.abspath(__file__)) + "/c-init-res/" + name, "r")
 	data = fp.read()
 	fp.close()
 	return data
 
 # Application's entry point
 def main():
+	print(sys.argv)
 	# File contents
-	gitignore = loadFile("res/_gitignore")
+	gitignore = loadFile("_gitignore")
+	source = loadFile("main.c")
+	include = loadFile("pch.h")
 	# File structure creation
-	makeFile("src/main.c")
-	makeFile("include/lib.h")
+	makeFile("src/main.c", source)
+	makeFile("include/pch.h", include)
 	makeFile("build/.build")
 	makeFile(".gitignore", gitignore)
 
