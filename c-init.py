@@ -108,6 +108,11 @@ def main():
 		makefile = makefile.replace(r"{linext}", linext)
 		makefile = makefile.replace(r"{cloptions}", cloptions)
 		makeFile("Makefile", makefile)
+	# CMake setup
+	else:
+		cmakefile = loadFile("CMakeLists.txt")
+		makeFile("CMakeLists.txt", cmakefile)
+
 
 	# File contents
 	gitignore = loadFile("_gitignore")
