@@ -41,18 +41,71 @@ def loadFile(name):
 	fp.close()
 	return data
 
+# Project setup data
+class ProjectSetup:
+	isProjectCpp = False
+	isProjectLibrary = False
+	isProjectCmake = False
+	detectedArgs = False
+
+def scanArg(arg):
+	ProjectSetup.isProjectCpp = not (arg[0] == 'c')
+	ProjectSetup.isProjectLibrary = not (arg[1] == 'a')
+	ProjectSetup.isProjectCmake = not (arg[2] == 'm')
+	ProjectSetup.detectedArgs = True
+
 # Application's entry point
 def main():
-	print(sys.argv)
+	# Scan arguments for options
+	arguments = sys.argv[1:]
+	for arg in arguments:
+		if len(arg) == 3:
+			scanArg(arg)
+			break
+
+	# If we didn't detect options, spit out a warning
+	if not ProjectSetup.detectedArgs:
+		print("Didn't detect any options.")
+		print("Automatically setting to 'cam':")
+		print("- c - C (use x for C++)")
+		print("- a - Application (use l for Library)")
+		print("- m - Build with make (use c for Cmake)")
+		accept = input("Do you accept these options? <y/n>:")
+		if accept != 'y' and accept != 'Y':
+			return
+		else:
+			print("Continuing with 'cam'...")
+	
+	# We now have ProjectSetup data
+	sourcepath = "main.c"
+	includepath = "main.h"
+	if ProjectSetup.isProjectLibrary:
+		sourcepath = "lib.c"
+		includepath = "lib.h"
+	if ProjectSetup.isProjectCpp:
+		sourcepath += "pp"
+		includepath += "pp"
+	
+	# Makefile setup
+	if not ProjectSetup.isProjectCmake:
+		makefile = loadFile("Makefile")
+		makefile = makefile.replace("sourcepath", sourcepath)
+		compiler = "$(CC)"
+		if ProjectSetup.isProjectCpp: 
+			compiler = "$(CXX)"
+		makefile = makefile.replace("compiler", compiler)
+		makeFile("Makefile", makefile)
+
 	# File contents
 	gitignore = loadFile("_gitignore")
-	source = loadFile("main.c")
-	include = loadFile("pch.h")
+	source = loadFile(sourcepath)
+	include = loadFile(includepath)
+
 	# File structure creation
-	makeFile("src/main.c", source)
-	makeFile("include/pch.h", include)
 	makeFile("build/.build")
 	makeFile(".gitignore", gitignore)
+	makeFile("src/" + sourcepath, source)
+	makeFile("include/" + includepath, include)
 
 
 if __name__ == "__main__":

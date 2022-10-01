@@ -15,8 +15,8 @@ python3 /path/to/c-init/c-init.py <options>
 	- `a` - specifies it's an executable application
 	- `l` - specifies it's a library
 3. Third letter `XX<>`:
-	- `c` - specifies it's a cmake project
 	- `m` - specifies it's a make project
+	- `c` - specifies it's a cmake project
 
 Finally, it should (somewhat) look like this:
 ```
