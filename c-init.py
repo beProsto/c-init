@@ -111,6 +111,8 @@ def main():
 	# CMake setup
 	else:
 		cmakefile = loadFile("CMakeLists.txt")
+		makefile = loadFile("CMakeMakefile")
+		makeFile("Makefile", makefile)
 		makeFile("CMakeLists.txt", cmakefile)
 
 
