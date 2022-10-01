@@ -3,14 +3,13 @@ CXX = g++
 
 ifeq ($(OS), Windows_NT)
 RM = del
-EXE = build\app.exe
+EXE = build\{name}{winext}
 else
 RM = rm
-EXE = ./build/app
+EXE = ./build/{name}{linext}
 endif
 
-#{ADDITIONS}#
-FLAGS = -Iinclude
+FLAGS = -Iinclude {cloptions}
 SRC = src/{sourcepath}
 COMPILER = {compiler}
 

@@ -89,11 +89,24 @@ def main():
 	# Makefile setup
 	if not ProjectSetup.isProjectCmake:
 		makefile = loadFile("Makefile")
-		makefile = makefile.replace(r"{sourcepath}", sourcepath)
 		compiler = "$(CC)"
+		name = "app"
+		winext = ".exe"
+		linext = ""
+		cloptions = ""
+		if ProjectSetup.isProjectLibrary:
+			name = "libmylib"
+			winext = ".dll"
+			linext = ".so"
+			cloptions = "-DLIB_BUILD_SHARED -shared"
 		if ProjectSetup.isProjectCpp: 
 			compiler = "$(CXX)"
+		makefile = makefile.replace(r"{sourcepath}", sourcepath)
 		makefile = makefile.replace(r"{compiler}", compiler)
+		makefile = makefile.replace(r"{name}", name)
+		makefile = makefile.replace(r"{winext}", winext)
+		makefile = makefile.replace(r"{linext}", linext)
+		makefile = makefile.replace(r"{cloptions}", cloptions)
 		makeFile("Makefile", makefile)
 
 	# File contents
