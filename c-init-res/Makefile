@@ -9,10 +9,10 @@ RM = rm
 EXE = ./build/app
 endif
 
-FLAGS = -Iinclude
 #{ADDITIONS}#
-SRC = src/sourcepath
-COMPILER = compiler
+FLAGS = -Iinclude
+SRC = src/{sourcepath}
+COMPILER = {compiler}
 
 $(EXE): $(SRC)
 	$(COMPILER) $(SRC) $(FLAGS) -o $(EXE)

@@ -89,11 +89,11 @@ def main():
 	# Makefile setup
 	if not ProjectSetup.isProjectCmake:
 		makefile = loadFile("Makefile")
-		makefile = makefile.replace("sourcepath", sourcepath)
+		makefile = makefile.replace(r"{sourcepath}", sourcepath)
 		compiler = "$(CC)"
 		if ProjectSetup.isProjectCpp: 
 			compiler = "$(CXX)"
-		makefile = makefile.replace("compiler", compiler)
+		makefile = makefile.replace(r"{compiler}", compiler)
 		makeFile("Makefile", makefile)
 
 	# File contents
