@@ -2,9 +2,18 @@
 
 A simple python project used for initialising c/c++ projects.
 
+Installation:
+```
+pip install c-init
+```
+
 Usage:
 ```
-python3 /path/to/c-init/c-init.py <options>
+c-init <options>
+```
+or
+```
+python -m c-init <options>
 ```
 
 `Options` are just 3 letters telling c-init what you want the project to be:
@@ -20,7 +29,7 @@ python3 /path/to/c-init/c-init.py <options>
 
 Finally, it should (somewhat) look like this:
 ```
-python3 c-init/c-init.py xam  # will create a C++ application project compiled with make 
-python3 c-init/c-init.py clc  # will create a C library project compiled with Cmake
+c-init xam  # will create a C++ application project compiled with make 
+c-init clc  # will create a C library project compiled with Cmake
 ...
 ```
