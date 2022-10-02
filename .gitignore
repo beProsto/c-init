@@ -1,5 +1,7 @@
 test
-c_init.egg-info
+
+cpp_init.egg-info
+cpp-init/__pycache__
+
 build
-c-init/__pycache__
 dist
