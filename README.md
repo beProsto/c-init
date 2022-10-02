@@ -1,19 +1,19 @@
-## c-init
+## cpp-init
 
 A simple python project used for initialising c/c++ projects.
 
 Installation:
 ```
-pip install c-init
+pip install cpp-init
 ```
 
 Usage:
 ```
-c-init <options>
+cpp-init <options>
 ```
 or
 ```
-python -m c-init <options>
+python -m cpp-init <options>
 ```
 
 `Options` are just 3 letters telling c-init what you want the project to be:
@@ -29,7 +29,7 @@ python -m c-init <options>
 
 Finally, it should (somewhat) look like this:
 ```
-c-init xam  # will create a C++ application project compiled with make 
-c-init clc  # will create a C library project compiled with CMake
+cpp-init xam  # will create a C++ application project compiled with make 
+cpp-init clc  # will create a C library project compiled with CMake
 ...
 ```
