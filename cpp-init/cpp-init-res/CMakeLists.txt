@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.0.0)
 
 # project's name and version
-set(project_name ${project_name})
+set(project_name {name})
 project(${project_name} VERSION 1.0.0)
 
 # add ./include/ as an include directory
