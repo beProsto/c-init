@@ -9,10 +9,6 @@ pip install cpp-init
 
 Usage:
 ```
-cpp-init <options>
-```
-or
-```
 python -m cpp-init <options>
 ```
 
