@@ -1,2 +1,4 @@
 test
 c_init.egg-info
+build
+c-init/__pycache__
