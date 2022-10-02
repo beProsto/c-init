@@ -36,7 +36,7 @@ def makeFile(name, contents=""):
 
 # Opens and dumps a file into a string
 def loadFile(name):
-	fp = open(os.path.dirname(os.path.abspath(__file__)) + "/c-init-res/" + name, "r")
+	fp = open(os.path.dirname(os.path.abspath(__file__)) + "/cpp-init-res/" + name, "r")
 	data = fp.read()
 	fp.close()
 	return data
