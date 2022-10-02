@@ -1,12 +1,14 @@
 CC = gcc
 CXX = g++
 
+PROJECT_NAME = {name}
+
 ifeq ($(OS), Windows_NT)
 RM = del
-EXE = build\{name}{winext}
+EXE = build\$(PROJECT_NAME){winext}
 else
 RM = rm
-EXE = ./build/{name}{linext}
+EXE = ./build/$(PROJECT_NAME){linext}
 endif
 
 FLAGS = -Iinclude {cloptions}
