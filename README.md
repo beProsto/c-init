@@ -1,6 +1,6 @@
 ## c-init
 
-A simple python project used for setting up c/c++ project directory structure.
+A simple python project used for initialising c/c++ projects.
 
 Usage:
 ```
