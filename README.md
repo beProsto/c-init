@@ -25,7 +25,7 @@ python -m cpp-init <options>
 
 Finally, it should (somewhat) look like this:
 ```
-cpp-init xam  # will create a C++ application project compiled with make 
-cpp-init clc  # will create a C library project compiled with CMake
+python -m cpp-init xam  # will create a C++ application project compiled with make 
+python -m cpp-init clc  # will create a C library project compiled with CMake
 ...
 ```
