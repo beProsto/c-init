@@ -30,6 +30,6 @@ python -m c-init <options>
 Finally, it should (somewhat) look like this:
 ```
 c-init xam  # will create a C++ application project compiled with make 
-c-init clc  # will create a C library project compiled with Cmake
+c-init clc  # will create a C library project compiled with CMake
 ...
 ```
