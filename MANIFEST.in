@@ -1,0 +1,4 @@
+include c-init/*
+include c-init/*.*
+include c-init/c-init-res/*
+include c-init/c-init-res/*.*
