@@ -4,10 +4,8 @@ cmake_minimum_required(VERSION 3.0.0)
 # project name Major.Minor.Patch
 project({name} VERSION 1.0.0)
 
-# include basic cmake project config
-include(CMakeUtility.cmake)
-
 # include_directories and link_libraries work on all targets defined BELOW them
+# translates to -Iinclude
 include_directories(include)
 
 # recursively search the include and src directories
@@ -17,7 +15,6 @@ file(GLOB_RECURSE srcs
 	"src/*.cpp"
 	"src/*.c"
 )
-
 {LIB_SNIPPET_START}
 # depending on the library type, we set a correct macro
 # create a library of of the sources
@@ -30,9 +27,8 @@ else()
 	target_compile_definitions({name} PRIVATE LIB_BUILD_SHARED)
 
 endif()
-{LIB_SNIPPET_END}
-
-{APP_SNIPPET_START}
+{LIB_SNIPPET_END}{APP_SNIPPET_START}
 # create an executable app out of the sources
 add_executable({name} ${srcs})
 {APP_SNIPPET_END}
+# cmake's ez :D

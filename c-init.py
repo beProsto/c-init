@@ -99,7 +99,7 @@ def main():
 			winext = ".dll"
 			linext = ".so"
 			cloptions = "-DLIB_BUILD_SHARED -shared"
-		if ProjectSetup.isProjectCpp: 
+		if ProjectSetup.isProjectCpp:
 			compiler = "$(CXX)"
 		makefile = makefile.replace(r"{sourcepath}", sourcepath)
 		makefile = makefile.replace(r"{compiler}", compiler)
@@ -108,20 +108,30 @@ def main():
 		makefile = makefile.replace(r"{linext}", linext)
 		makefile = makefile.replace(r"{cloptions}", cloptions)
 		makeFile("Makefile", makefile)
-	# CMake setup
+	# CMakeLists setup
 	else:
-		cmakefile = loadFile("CMakeLists.txt")
+		cmakelists = loadFile("CMakeLists.txt")
 		makefile = loadFile("CMakeMakefile")
+		name = "app"
+		if ProjectSetup.isProjectLibrary:
+			name = "mylib"
+			cmakelists = cmakelists.split(r"{APP_SNIPPET_START}")[0] + cmakelists.split(r"{APP_SNIPPET_END}")[1];
+		else:
+			cmakelists = cmakelists.split(r"{LIB_SNIPPET_START}")[0] + cmakelists.split(r"{LIB_SNIPPET_END}")[1];
+		cmakelists = cmakelists.replace(r"{LIB_SNIPPET_START}", "")
+		cmakelists = cmakelists.replace(r"{LIB_SNIPPET_END}", "")
+		cmakelists = cmakelists.replace(r"{APP_SNIPPET_START}", "")
+		cmakelists = cmakelists.replace(r"{APP_SNIPPET_END}", "")
+		cmakelists = cmakelists.replace(r"{name}", name)
 		makeFile("Makefile", makefile)
-		makeFile("CMakeLists.txt", cmakefile)
+		makeFile("CMakeLists.txt", cmakelists)
 
-
-	# File contents
+	# Simple files' contents
 	gitignore = loadFile("_gitignore")
 	source = loadFile(sourcepath)
 	include = loadFile(includepath)
 
-	# File structure creation
+	# File structure
 	makeFile("build/.build")
 	makeFile(".gitignore", gitignore)
 	makeFile("src/" + sourcepath, source)
