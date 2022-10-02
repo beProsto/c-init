@@ -9,36 +9,19 @@
 import sys
 import os
 
-# Recursively creates directories
-def makeDirectory(name):
-	naems = name.split("/");
-	if naems[0] == ".":
-		makeDirectory(name[2 : len(name)])
-		return
-	try:
-		os.mkdir("./" + naems[0])
-	except:
-		pass
-	name = name[len(naems[0])+1 : len(name)]
-	if len(name) > 0:
-		os.chdir(naems[0])
-		makeDirectory(name)
-		os.chdir("..")
-
 # Recursively creates a file with custom contents in it
 def makeFile(name, contents=""):
 	naems = name.split("/");
 	if len(naems) > 1:
-		makeDirectory(name[0 : -len(naems[-1])])
-	fp = open(name, 'w')
-	fp.write(contents)
-	fp.close()
+		os.makedirs(name[0 : -len(naems[-1])], exist_ok=True)
+	with open(name, 'w') as fp:
+		fp.write(contents)
 
 # Opens and dumps a file into a string
 def loadFile(name):
-	fp = open(os.path.dirname(os.path.abspath(__file__)) + "/cpp-init-res/" + name, "r")
-	data = fp.read()
-	fp.close()
+	data = ""
+	with open(os.path.dirname(os.path.abspath(__file__)) + "/cpp-init-res/" + name, "r") as fp:
+		data = fp.read()
 	return data
 
 # Project setup data
