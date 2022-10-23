@@ -9,7 +9,7 @@ pip install cpp-init
 
 Usage:
 ```
-python -m cpp-init <options>
+python -m cpp_init <options>
 ```
 
 `Options` are just 3 letters telling c-init what you want the project to be:
@@ -25,7 +25,7 @@ python -m cpp-init <options>
 
 Finally, it should (somewhat) look like this:
 ```
-python -m cpp-init xam  # will create a C++ application project compiled with make 
-python -m cpp-init clc  # will create a C library project compiled with CMake
+cpp_init xam  # will create a C++ application project compiled with make 
+cpp_init clc  # will create a C library project compiled with CMake
 ...
 ```
