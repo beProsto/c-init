@@ -1,10 +1,10 @@
-## cpp-init
+## cpp_init
 
 A simple python project used for initialising c/c++ projects.
 
 Installation:
 ```
-pip install cpp-init
+pip install cpp_init
 ```
 
 Usage:
